@@ -6,7 +6,13 @@ output.innerHTML = "" // Removing old search results
 
 let template = "";
 
-template = `
+
+
+function showCars(post){
+    const output = document.getElementById("output");
+    const rentals = post.rentals;
+    for ( const rental of rentals) {
+        template = `
 <section class="rentals">
     <img src="${rental.image}" alt="rental" class="car"> 
     <div class="card-text">
@@ -16,11 +22,6 @@ template = `
         ${rental.price} <br> <button type="button"> Book Now </button>
     </div>
 </section>`
-
-function showCars(post){
-    const output = document.getElementById("output");
-    const rentals = post.rentals;
-    for ( const rental of rentals) {
         if (rental.persons >= document.getElementById("formpersons").value && rental.suitcases >= document.getElementById("formsuitcases").value) {
             output.insertAdjacentHTML ("beforeend", template);
         }
